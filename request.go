@@ -154,6 +154,15 @@ func (r *Response) BodyMap() (map[string]interface{}, error) {
 		for k, v := range values {
 			result[k] = v[0]
 		}
+	case "text/plain":
+		result = make(map[string]interface{})
+		result["raw"] = string(body)
+	case "text/html":
+		result = make(map[string]interface{})
+		result["raw"] = string(body)
+	case "text/xml":
+		result = make(map[string]interface{})
+		result["raw"] = string(body)
 	default:
 		return nil, fmt.Errorf("unsupported Content-Type: %s", contentType)
 	}
