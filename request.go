@@ -164,7 +164,8 @@ func (r *Response) BodyMap() (map[string]interface{}, error) {
 		result = make(map[string]interface{})
 		result["raw"] = string(body)
 	default:
-		return nil, fmt.Errorf("unsupported Content-Type: %s", contentType)
+		result = make(map[string]interface{})
+		result["raw"] = string(body)
 	}
 
 	return result, nil
