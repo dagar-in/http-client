@@ -169,4 +169,3 @@ func (r *Response) BodyMap(result *any) (map[string]interface{}, error) {
 	return result, nil
 }
 
-func 
