@@ -129,15 +129,13 @@ type Response struct {
 	*http.Response
 }
 
-func (r *Response) BodyMap() (map[string]interface{}, error) {
+func (r *Response) BodyMap(result *any) (map[string]interface{}, error) {
 	body, err := ioutil.ReadAll(r.Body)
 	if err != nil {
 		return nil, err
 	}
 
 	contentType := r.Header.Get("Content-Type")
-
-	var result map[string]interface{}
 
 	switch contentType {
 	case "application/json":
@@ -170,3 +168,5 @@ func (r *Response) BodyMap() (map[string]interface{}, error) {
 
 	return result, nil
 }
+
+func 
